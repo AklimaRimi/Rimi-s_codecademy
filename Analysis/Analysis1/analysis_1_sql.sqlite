@@ -1,0 +1,98 @@
+-- 1
+
+-- select * from stream limit 20
+-- select * from chat limit 20
+
+-- 2
+
+-- select distinct game  from stream limit 20
+
+-- output: League of Legends,DayZ,Dota 2,Heroes of the Storm,Counter-Strike: Global Offensive,Hearthstone: Heroes of Warcraft,
+-- The Binding of Isaac: Rebirth,Agar.io,Gaming Talk Shows,Rocket League,World of Tanks,ARK: Survival Evolved,SpeedRunners
+-- Breaking Point,Duck Game,Devil May Cry 4: Special Edition,Block N Load,Fallout 3,Batman: Arkham Knight
+
+-- 3
+-- select distinct channel from stream limit 20
+
+-- output: frank,george,estelle,morty,kramer,jerry,helen,newman,elaine,susan
+
+-- 4
+-- select game,count(*)
+-- from stream 
+-- group by game order by count(*) desc 
+
+-- output:League of Legends	1070
+
+-- 5
+-- select country, count(*)
+-- from stream
+-- where game = 'League of Legends'
+-- group by game order by count(*) desc
+
+-- output: US	1070
+
+-- 6
+-- select player, count(*)
+-- from stream 
+-- where (player ='site' or player ='iphone_t' or player ='android')
+-- group by player order by count(*) desc
+
+-- output:
+-- player	  count(*)
+-- site	    1365
+-- iphone_t	622
+-- android 	547
+
+
+-- 7
+-- SELECT game,
+--  CASE
+--   WHEN game = 'Dota 2'
+--       THEN 'MOBA'
+--   WHEN game = 'League of Legends' 
+--       THEN 'MOBA'
+--   WHEN game = 'Heroes of the Storm'
+--       THEN 'MOBA'
+--     WHEN game = 'Counter-Strike: Global Offensive'
+--       THEN 'FPS'
+--     WHEN game = 'DayZ'
+--       THEN 'Survival'
+--     WHEN game = 'ARK: Survival Evolved'
+--       THEN 'Survival'
+--   ELSE 'Other'
+--   END AS 'genre',
+--   COUNT(*)
+-- FROM stream
+-- GROUP BY 1
+-- ORDER BY 3 DESC;
+
+-- 8
+-- SELECT time
+-- FROM stream
+-- LIMIT 10;
+
+-- 9
+-- SELECT time,
+--    strftime('%S', time)
+-- FROM stream
+-- GROUP BY 1
+-- LIMIT 20;
+
+
+-- 10
+
+-- SELECT time,
+--    strftime('%H', time)
+-- FROM stream
+-- GROUP BY 1
+-- LIMIT 20;
+
+
+-- 11
+-- SELECT *
+-- FROM stream
+-- JOIN chat
+--   ON stream.device_id = chat.device_id;
+
+
+-- 12
